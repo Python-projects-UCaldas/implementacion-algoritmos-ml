@@ -1,0 +1,7 @@
+https://www.geeksforgeeks.org/support-vector-machine-algorithm/
+https://www.geeksforgeeks.org/implementation-k-nearest-neighbors/
+https://www.geeksforgeeks.org/random-forest-regression-in-python/
+https://www.geeksforgeeks.org/k-means-clustering-introduction/
+https://www.geeksforgeeks.org/ml-naive-bayes-scratch-implementation-using-python/
+https://www.w3schools.com/python/python_ml_hierarchial_clustering.asp
+https://www.w3schools.com/python/python_ml_k-means.asp
