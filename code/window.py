@@ -1,8 +1,9 @@
 import tkinter as tk
 import tkinter.font as tkFont
-from algorithms import kmeans, hola
+from algorithms import kmeans, knnNN, randomForest
 import os
 from tkinter import filedialog as fd
+from tkinter import simpledialog
 from tkinter.messagebox import showinfo
 
 class App:
@@ -77,7 +78,7 @@ class App:
 
         self.filename = fd.askopenfilename(
             title='Abrir archivo',
-            initialdir=os.getcwd(),
+            initialdir=os.getcwd() + '/data',
             filetypes=filetypes)
 
         showinfo(
@@ -95,22 +96,31 @@ class App:
                 self.exceptionMessage = 'Debes seleccionar un algoritmo'
                 raise Exception()
             if self.GListBox_727.curselection()[0] == 0:
-                hola()
+                columns = simpledialog.askstring(title=" ",
+                    prompt="Inserte las columnas separadas por coma:")
+                point = simpledialog.askstring(title=" ",
+                    prompt="Ingrese los valores del nuevo punto separados por coma:")
+                knnNN(self.filename, columns, point)
             elif self.GListBox_727.curselection()[0] == 1:
-                print("Random forest")
+                randomForest()
             elif self.GListBox_727.curselection()[0] == 2:
-                kmeans(self.filename)
+                clusters = simpledialog.askstring(title=" ",
+                                  prompt="Inserte el número de clusters:")
+                useColumns = simpledialog.askstring(title=" ",
+                                  prompt="Inserte las columnas separadas por coma:")
+                kmeans(self.filename, clusters, useColumns)
             elif self.GListBox_727.curselection()[0] == 3:
                 print("Dendograma (Cluster Jeráquicos)")
             elif self.GListBox_727.curselection()[0] == 4:
                 print("Naive Bayes")
             elif self.GListBox_727.curselection()[0] == 5:
                 print("Support Vector Machine")
-        except:
+        except Exception as e:
             showinfo(
             title='Alerta',
             message=self.exceptionMessage
         )
+            print(repr(e))
 
 
 if __name__ == "__main__":
