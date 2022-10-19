@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.font as tkFont
-from algorithms import kmeans, knnNN, randomForest
+from algorithms import kmeans, knnNN, randomForest, dendrogramHC, naiveBayes, svmAlg
 import os
 from tkinter import filedialog as fd
 from tkinter import simpledialog
@@ -110,11 +110,13 @@ class App:
                                   prompt="Inserte las columnas separadas por coma:")
                 kmeans(self.filename, clusters, useColumns)
             elif self.GListBox_727.curselection()[0] == 3:
-                print("Dendograma (Cluster Jeráquicos)")
+                useColumns = simpledialog.askstring(title=" ",
+                    prompt="Inserte las columnas separadas por coma:")
+                dendrogramHC(self.filename, useColumns)
             elif self.GListBox_727.curselection()[0] == 4:
-                print("Naive Bayes")
+                naiveBayes(self.filename)
             elif self.GListBox_727.curselection()[0] == 5:
-                print("Support Vector Machine")
+                svmAlg(self.filename)
         except Exception as e:
             showinfo(
             title='Alerta',
